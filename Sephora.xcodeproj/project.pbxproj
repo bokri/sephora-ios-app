@@ -7,18 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20AD6B1A2C501D3600FF8D89 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AD6B192C501D3600FF8D89 /* Coordinator.swift */; };
+		20AD6B1C2C501DBD00FF8D89 /* HomePageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AD6B1B2C501DBD00FF8D89 /* HomePageCoordinator.swift */; };
+		20AD6B1F2C501E8A00FF8D89 /* ProductDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AD6B1E2C501E8A00FF8D89 /* ProductDetailCoordinator.swift */; };
+		20AD6B222C501EBE00FF8D89 /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AD6B212C501EBE00FF8D89 /* ProductDetailsViewController.swift */; };
+		20AD6B242C501EE300FF8D89 /* ProductDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AD6B232C501EE300FF8D89 /* ProductDetailsViewModel.swift */; };
+		20AD6B262C50200200FF8D89 /* HomePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AD6B252C50200200FF8D89 /* HomePageViewModel.swift */; };
 		29287F3B25BE64F70053B536 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29287F3A25BE64F70053B536 /* AppDelegate.swift */; };
 		29287F3D25BE64F70053B536 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29287F3C25BE64F70053B536 /* SceneDelegate.swift */; };
-		29287F3F25BE64F70053B536 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29287F3E25BE64F70053B536 /* ViewController.swift */; };
+		29287F3F25BE64F70053B536 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29287F3E25BE64F70053B536 /* HomePageViewController.swift */; };
 		29287F4425BE64F80053B536 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29287F4325BE64F80053B536 /* Assets.xcassets */; };
 		29287F4725BE64F80053B536 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29287F4525BE64F80053B536 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		20AD6B192C501D3600FF8D89 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		20AD6B1B2C501DBD00FF8D89 /* HomePageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageCoordinator.swift; sourceTree = "<group>"; };
+		20AD6B1E2C501E8A00FF8D89 /* ProductDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailCoordinator.swift; sourceTree = "<group>"; };
+		20AD6B212C501EBE00FF8D89 /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
+		20AD6B232C501EE300FF8D89 /* ProductDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewModel.swift; sourceTree = "<group>"; };
+		20AD6B252C50200200FF8D89 /* HomePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewModel.swift; sourceTree = "<group>"; };
 		29287F3725BE64F70053B536 /* Sephora.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sephora.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29287F3A25BE64F70053B536 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29287F3C25BE64F70053B536 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		29287F3E25BE64F70053B536 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		29287F3E25BE64F70053B536 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		29287F4325BE64F80053B536 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29287F4625BE64F80053B536 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		29287F4825BE64F80053B536 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -35,6 +47,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20AD6B182C501D2700FF8D89 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				20AD6B192C501D3600FF8D89 /* Coordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		20AD6B1D2C501E0400FF8D89 /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				20AD6B272C50252800FF8D89 /* Coordinator */,
+				29287F3E25BE64F70053B536 /* HomePageViewController.swift */,
+				20AD6B252C50200200FF8D89 /* HomePageViewModel.swift */,
+			);
+			path = HomePage;
+			sourceTree = "<group>";
+		};
+		20AD6B202C501EAE00FF8D89 /* ProductDetails */ = {
+			isa = PBXGroup;
+			children = (
+				20AD6B282C50253100FF8D89 /* Coordinator */,
+				20AD6B212C501EBE00FF8D89 /* ProductDetailsViewController.swift */,
+				20AD6B232C501EE300FF8D89 /* ProductDetailsViewModel.swift */,
+			);
+			path = ProductDetails;
+			sourceTree = "<group>";
+		};
+		20AD6B272C50252800FF8D89 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				20AD6B1B2C501DBD00FF8D89 /* HomePageCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		20AD6B282C50253100FF8D89 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				20AD6B1E2C501E8A00FF8D89 /* ProductDetailCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		29287F2E25BE64F70053B536 = {
 			isa = PBXGroup;
 			children = (
@@ -54,9 +110,11 @@
 		29287F3925BE64F70053B536 /* Sephora */ = {
 			isa = PBXGroup;
 			children = (
+				20AD6B202C501EAE00FF8D89 /* ProductDetails */,
+				20AD6B1D2C501E0400FF8D89 /* HomePage */,
+				20AD6B182C501D2700FF8D89 /* Coordinators */,
 				29287F3A25BE64F70053B536 /* AppDelegate.swift */,
 				29287F3C25BE64F70053B536 /* SceneDelegate.swift */,
-				29287F3E25BE64F70053B536 /* ViewController.swift */,
 				29287F4325BE64F80053B536 /* Assets.xcassets */,
 				29287F4525BE64F80053B536 /* LaunchScreen.storyboard */,
 				29287F4825BE64F80053B536 /* Info.plist */,
@@ -134,9 +192,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29287F3F25BE64F70053B536 /* ViewController.swift in Sources */,
+				20AD6B222C501EBE00FF8D89 /* ProductDetailsViewController.swift in Sources */,
+				29287F3F25BE64F70053B536 /* HomePageViewController.swift in Sources */,
+				20AD6B262C50200200FF8D89 /* HomePageViewModel.swift in Sources */,
+				20AD6B1C2C501DBD00FF8D89 /* HomePageCoordinator.swift in Sources */,
+				20AD6B242C501EE300FF8D89 /* ProductDetailsViewModel.swift in Sources */,
 				29287F3B25BE64F70053B536 /* AppDelegate.swift in Sources */,
+				20AD6B1F2C501E8A00FF8D89 /* ProductDetailCoordinator.swift in Sources */,
 				29287F3D25BE64F70053B536 /* SceneDelegate.swift in Sources */,
+				20AD6B1A2C501D3600FF8D89 /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
