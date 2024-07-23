@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,7 @@
 		20AD6B222C501EBE00FF8D89 /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AD6B212C501EBE00FF8D89 /* ProductDetailsViewController.swift */; };
 		20AD6B242C501EE300FF8D89 /* ProductDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AD6B232C501EE300FF8D89 /* ProductDetailsViewModel.swift */; };
 		20AD6B262C50200200FF8D89 /* HomePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AD6B252C50200200FF8D89 /* HomePageViewModel.swift */; };
+		20AD6B2B2C50286D00FF8D89 /* SephoraBusiness in Frameworks */ = {isa = PBXBuildFile; productRef = 20AD6B2A2C50286D00FF8D89 /* SephoraBusiness */; };
 		29287F3B25BE64F70053B536 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29287F3A25BE64F70053B536 /* AppDelegate.swift */; };
 		29287F3D25BE64F70053B536 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29287F3C25BE64F70053B536 /* SceneDelegate.swift */; };
 		29287F3F25BE64F70053B536 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29287F3E25BE64F70053B536 /* HomePageViewController.swift */; };
@@ -41,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20AD6B2B2C50286D00FF8D89 /* SephoraBusiness in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +140,9 @@
 			dependencies = (
 			);
 			name = Sephora;
+			packageProductDependencies = (
+				20AD6B2A2C50286D00FF8D89 /* SephoraBusiness */,
+			);
 			productName = Sephora;
 			productReference = 29287F3725BE64F70053B536 /* Sephora.app */;
 			productType = "com.apple.product-type.application";
@@ -166,6 +171,9 @@
 				Base,
 			);
 			mainGroup = 29287F2E25BE64F70053B536;
+			packageReferences = (
+				20AD6B292C50286D00FF8D89 /* XCLocalSwiftPackageReference "Packages/SephoraBusiness" */,
+			);
 			productRefGroup = 29287F3825BE64F70053B536 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -400,6 +408,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		20AD6B292C50286D00FF8D89 /* XCLocalSwiftPackageReference "Packages/SephoraBusiness" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/SephoraBusiness;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		20AD6B2A2C50286D00FF8D89 /* SephoraBusiness */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SephoraBusiness;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 29287F2F25BE64F70053B536 /* Project object */;
 }
