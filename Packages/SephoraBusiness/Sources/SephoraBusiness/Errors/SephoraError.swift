@@ -9,4 +9,5 @@ import Foundation
 
 public enum SephoraError: Error {
     case productsError(originalError: Error)
+    case dataBaseError(originalError: Error)
 }
