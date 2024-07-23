@@ -1,0 +1,14 @@
+*.xcuserstate
+*.DS_Store
+project.xcworkspace
+xcuserdata
+project.xcworkspace/
+xcuserdata/
+Pods
+docs/
+report.xml
+DerivedData
+node_modules/
+build
+tmp
+.idea/
