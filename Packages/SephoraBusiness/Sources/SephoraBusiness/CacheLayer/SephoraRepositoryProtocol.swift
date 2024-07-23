@@ -7,7 +7,7 @@
 
 import CoreData
 
-protocol SephoraRepositoryProtocol {
+public protocol SephoraRepositoryProtocol {
     func getProducts() throws -> [ProductItemModel]
     func addProductItems(products: [ProductItem]) throws
 }

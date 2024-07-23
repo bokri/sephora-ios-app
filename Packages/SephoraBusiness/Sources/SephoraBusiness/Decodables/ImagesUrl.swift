@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ImagesUrl: Decodable {
+public struct ImagesUrl: Decodable {
     let small: String
     let large: String?
 }

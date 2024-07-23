@@ -8,15 +8,25 @@
 import Foundation
 import CoreData
 
+public final class CoreDataContainer: NSPersistentContainer {
+  public init(name: String, bundle: Bundle,
+    inMemory: Bool = false) {
+    guard let mom = NSManagedObjectModel.mergedModel(from: [bundle]) else {
+      fatalError("Failed to create mom")
+    }
+    super.init(name: name, managedObjectModel: mom)
+  }
+}
 
-final class CacheLayer {
+
+public final class CacheLayer {
     
-    static let instance = CacheLayer()
+    public static let instance = CacheLayer()
     
     // MARK: - Private
     
     private lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "Model")
+        let container = CoreDataContainer(name: "Model", bundle: .module)
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Error of type \(SephoraError.dataBaseError(originalError: error))")
@@ -27,7 +37,7 @@ final class CacheLayer {
     
     // MARK: - Public
     
-    lazy var backgroundContext: NSManagedObjectContext = {
+    public lazy var backgroundContext: NSManagedObjectContext = {
         return persistentContainer.newBackgroundContext()
     }()
 }

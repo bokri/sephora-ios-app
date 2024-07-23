@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class SephoraRepository: SephoraRepositoryProtocol {
+public final class SephoraRepository: SephoraRepositoryProtocol {
     
     // MARK: - Properties
 
@@ -15,12 +15,12 @@ final class SephoraRepository: SephoraRepositoryProtocol {
 
       // MARK: - Init
 
-      init(cacheLayer: CacheLayer = CacheLayer.instance) {
+    public init(cacheLayer: CacheLayer = CacheLayer.instance) {
         self.cacheLayer = cacheLayer
       }
     
     
-    func getProducts() throws -> [ProductItemModel] {
+    public func getProducts() throws -> [ProductItemModel] {
         do {
             let fetchRequest = ProductItemModel.fetchRequest()
             let sortDescriptor = NSSortDescriptor(key: "isSpecialBrand", ascending: true)
@@ -32,9 +32,9 @@ final class SephoraRepository: SephoraRepositoryProtocol {
         }
     }
     
-    func addProductItems(products: [ProductItem]) throws {
+    public func addProductItems(products: [ProductItem]) throws {
         
-        let products = products.map { item in
+        let products = products.map { item -> ProductItemModel in
             let model = ProductItemModel(context: cacheLayer.backgroundContext)
             model.productId = item.productId
             model.productName = item.productName
@@ -51,6 +51,7 @@ final class SephoraRepository: SephoraRepositoryProtocol {
             model.cBrand?.name = item.cBrand.name
             
             model.isSpecialBrand = item.isSpecialBrand
+            return model
         }
         
         do {
