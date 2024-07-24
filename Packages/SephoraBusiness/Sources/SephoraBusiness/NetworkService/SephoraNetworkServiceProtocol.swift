@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Entities
 
 public protocol SephoraNetworkServiceProtocol: Actor {
     func getProducts() async throws -> [ProductItem]

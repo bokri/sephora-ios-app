@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import Entities
+import CoreData
 
 public final class SephoraRepository: SephoraRepositoryProtocol {
     
@@ -34,27 +36,21 @@ public final class SephoraRepository: SephoraRepositoryProtocol {
     
     public func addProductItems(products: [ProductItem]) throws {
         
-        let products = products.map { item -> ProductItemModel in
-            let model = ProductItemModel(context: cacheLayer.backgroundContext)
-            model.productId = item.productId
-            model.productName = item.productName
-            model.productDescription = item.description
-            model.price = item.price
-            
-            model.imagesUrl = ImagesUrlModel(context: cacheLayer.backgroundContext)
-            model.imagesUrl?.id = UUID()
-            model.imagesUrl?.large = item.imagesUrl?.large
-            model.imagesUrl?.small = item.imagesUrl?.small
-            
-            model.cBrand = BrandModel(context: cacheLayer.backgroundContext)
-            model.cBrand?.id = item.cBrand.id
-            model.cBrand?.name = item.cBrand.name
-            
-            model.isSpecialBrand = item.isSpecialBrand
+        let oldProducts = try getProducts()
+        
+        let newProducts = products.map { item -> NSManagedObject in
+            let model = item.toProductItemModel(context: cacheLayer.backgroundContext)
             return model
         }
         
+        let deletedProducts = oldProducts.filter { oldModel in
+            newProducts.contains(oldModel) == false
+        }
+        
         do {
+            for product in deletedProducts {
+                try cacheLayer.backgroundContext.delete(product)
+            }
             try cacheLayer.backgroundContext.save()
         } catch {
             throw SephoraError.dataBaseError(originalError: error)

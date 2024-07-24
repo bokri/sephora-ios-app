@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SephoraBusiness
 
 class HomePageViewController: UIViewController {
     
@@ -44,6 +45,12 @@ class HomePageViewController: UIViewController {
     }
     
     @objc func onClick() {
-        coordinator?.goToDetailView()
+//        coordinator?.goToDetailView()
+        Task {
+            let sephoraService = SephoraService()
+            let products = try? await sephoraService.getProducts()
+            print("Products \(products?.count)")
+        }
+        
     }
 }

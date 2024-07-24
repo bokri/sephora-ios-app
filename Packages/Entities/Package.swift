@@ -4,37 +4,31 @@
 import PackageDescription
 
 let package = Package(
-    name: "SephoraBusiness",
+    name: "Entities",
     platforms: [.iOS(.v15)],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "SephoraBusiness",
-            targets: ["SephoraBusiness"]),
+            name: "Entities",
+            targets: ["Entities"]
+        ),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(url: "https://github.com/AliSoftware/OHHTTPStubs", from: Version("9.1.0")),
-        .package(name: "Entities", path: "../Entities")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "SephoraBusiness",
+            name: "Entities",
             dependencies: [
-                .product(name: "Entities", package: "Entities"),
             ],
             swiftSettings: [.enableUpcomingFeature("StrictConcurrency")]
         ),
         .testTarget(
-            name: "SephoraBusinessTests",
+            name: "EntitiesTests",
             dependencies: [
-                "SephoraBusiness",
-                .product(name: "OHHTTPStubsSwift", package: "OHHTTPStubs")
-            ],
-            resources: [
-                .process("Resources")
+                "Entities",
             ],
             swiftSettings: [.enableUpcomingFeature("StrictConcurrency")]
         )

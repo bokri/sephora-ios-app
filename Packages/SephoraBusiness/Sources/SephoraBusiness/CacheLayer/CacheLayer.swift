@@ -38,6 +38,8 @@ public final class CacheLayer {
     // MARK: - Public
     
     public lazy var backgroundContext: NSManagedObjectContext = {
-        return persistentContainer.newBackgroundContext()
+        var context = persistentContainer.newBackgroundContext()
+        context.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+        return context
     }()
 }

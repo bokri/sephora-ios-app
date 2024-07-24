@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import Entities
 
 public protocol SephoraRepositoryProtocol {
     func getProducts() throws -> [ProductItemModel]
