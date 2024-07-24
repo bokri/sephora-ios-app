@@ -47,6 +47,7 @@ public class ProductCollectionViewFlowLayout: UICollectionViewFlowLayout {
         guard let collectionView = collectionView else { return }
         // Calculate item width based on available space
         let availableWidth = collectionView.bounds.width - sectionInset.left - sectionInset.right - minimumInteritemSpacing
+        guard availableWidth > 0 else { return }
         let itemWidth = availableWidth / 2
         itemSize = CGSize(width: itemWidth, height: 250) // Set item size
     }

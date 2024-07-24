@@ -137,14 +137,8 @@ class ProductDetailsViewController: UIViewController {
         priceLabel.text = "\(product.price) €"
         
         // Load product image asynchronously
-        if let imageUrlString = product.imagesUrl?.small, let imageUrl = URL(string: imageUrlString) {
-            URLSession.shared.dataTask(with: imageUrl) { data, response, error in
-                if let data = data, let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self.productImageView.image = image
-                    }
-                }
-            }.resume()
+        if let imageUrlString = product.imagesUrl?.small {
+            self.productImageView.loadImage(from: imageUrlString, placeholder: UIImage(resource: .placeholder))
         }
     }
 }

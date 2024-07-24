@@ -97,14 +97,8 @@ public class ProductCollectionViewCell: UICollectionViewCell {
         brandLabel.textColor = UIColor(resource: .foreground)
 
         // Load and set product image
-        if let small = product.imagesUrl?.small, let url = URL(string: small) {
-            URLSession.shared.dataTask(with: url) { data, response, error in
-                if let data = data {
-                    DispatchQueue.main.async {
-                        self.productImageView.image = UIImage(data: data)
-                    }
-                }
-            }.resume()
+        if let small = product.imagesUrl?.small {
+            self.productImageView.loadImage(from: small, placeholder: UIImage(resource: .placeholder))
         }
     }
 }

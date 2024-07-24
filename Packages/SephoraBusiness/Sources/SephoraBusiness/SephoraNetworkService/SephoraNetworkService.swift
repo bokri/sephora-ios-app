@@ -29,6 +29,7 @@ public actor SephoraNetworkService: SephoraNetworkServiceProtocol {
             let results = try await networkService.fetchData(endpoint, type: [ProductItem].self)
             return results
         } catch {
+            Logger.error("Network error fetching products: \(error.localizedDescription)")
             throw SephoraError.productsError(originalError: error)
         }
     }

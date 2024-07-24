@@ -27,9 +27,7 @@ public actor SephoraService: SephoraServiceProtocol {
     /// Retrieves a list of products, either from the cache or by fetching from the network.
     public func getProducts() async throws -> [ProductItem] {
         let savedProducts = try repository.getProducts()
-            .compactMap { model -> ProductItem? in
-                return model.toEntity()
-            }
+            .compactMap { $0.toEntity() }
 
         if savedProducts.isEmpty {
             let products = try await networkService.getProducts()

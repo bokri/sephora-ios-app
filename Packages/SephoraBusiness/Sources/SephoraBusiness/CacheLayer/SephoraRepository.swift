@@ -48,7 +48,7 @@ public class SephoraRepository: SephoraRepositoryProtocol {
             throw SephoraError.dataBaseError(originalError: error)
         }
     }
-    
+
     /// Adds or updates `ProductItem` objects and removes old ones.
     /// - Parameter products: List of `ProductItem` to add.
     /// - Throws: `SephoraError.dataBaseError` on failure.
@@ -58,8 +58,7 @@ public class SephoraRepository: SephoraRepositoryProtocol {
         
         // Convert new products to Core Data models
         let newProducts = products.map { item -> NSManagedObject in
-            let model = item.toProductItemModel(context: cacheLayer.backgroundContext)
-            return model
+            return item.toProductItemModel(context: cacheLayer.backgroundContext)
         }
         
         // Identify products that should be deleted from Core Data
