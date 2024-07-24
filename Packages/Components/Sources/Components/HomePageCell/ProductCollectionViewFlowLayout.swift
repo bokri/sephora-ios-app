@@ -22,6 +22,8 @@ public class ProductCollectionViewFlowLayout: UICollectionViewFlowLayout {
     private func setupLayout() {
         minimumLineSpacing = 10
         minimumInteritemSpacing = 10
+        scrollDirection = .vertical
+        sectionInset = UIEdgeInsets(top: 0, left: Dimens.paddingM, bottom: 0, right: Dimens.paddingM)
     }
 
     public override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
