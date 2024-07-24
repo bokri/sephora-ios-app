@@ -14,7 +14,7 @@ class MockCacheLayer: CacheLayerProtocol {
     public static let instance = MockCacheLayer()
     
     private lazy var persistentContainer: CoreDataContainer = {
-        let container =  CoreDataContainer(name: "Model", bundle: Bundle.module, inMemory: true)
+        let container =  CoreDataContainer(name: "Model", bundle: Bundle(for: type(of: self)), inMemory: true)
         return container
     }()
     

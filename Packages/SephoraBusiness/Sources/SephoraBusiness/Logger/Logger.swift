@@ -49,7 +49,7 @@ import os.log
  
  */
 public enum Logger {
-    private static var destinations: [LogDestination] = [ConsoleDestination()]
+    static var destinations: [LogDestination] = [ConsoleDestination()]
 
     private enum Level {
         case debug
