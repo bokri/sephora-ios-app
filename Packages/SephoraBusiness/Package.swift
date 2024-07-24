@@ -25,6 +25,9 @@ let package = Package(
             dependencies: [
                 .product(name: "Entities", package: "Entities"),
             ],
+            resources: [
+                .process("Resources")
+            ],
             swiftSettings: [.enableUpcomingFeature("StrictConcurrency")]
         ),
         .testTarget(

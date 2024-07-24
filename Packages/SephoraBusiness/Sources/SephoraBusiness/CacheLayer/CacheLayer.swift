@@ -8,14 +8,13 @@
 import Foundation
 import CoreData
 
-
-public final class CacheLayer {
+public class CacheLayer: CacheLayerProtocol {
     
     public static let instance = CacheLayer()
     
     // MARK: - Private
     
-    private lazy var persistentContainer: NSPersistentContainer = {
+    lazy var persistentContainer: NSPersistentContainer = {
         let container = CoreDataContainer(name: "Model", bundle: .module)
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {

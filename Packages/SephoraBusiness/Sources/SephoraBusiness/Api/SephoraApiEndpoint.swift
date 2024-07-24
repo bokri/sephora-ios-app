@@ -8,7 +8,7 @@
 import Foundation
 
 public enum SephoraApiEndpoint: APIEndpoint {
-    /// The base URL for Foodix API requests.
+    /// The base URL for Sephora API requests.
     private static let baseURL = "https://sephoraios.github.io"
     
     case getProducts

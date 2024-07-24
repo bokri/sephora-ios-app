@@ -34,4 +34,21 @@ class CoreDataContainerTests: XCTestCase {
         XCTAssertEqual(coreDataContainer.name, containerName)
         XCTAssertNotNil(coreDataContainer.persistentStoreCoordinator)
     }
+    
+    func testCoreDataContainerInitializationInMemory() {
+        let containerName = "TestContainer"
+        
+        let coreDataContainer = CoreDataContainer(name: containerName, bundle: mockBundle, inMemory: true)
+        
+        XCTAssertNotNil(coreDataContainer)
+        XCTAssertEqual(coreDataContainer.name, containerName)
+        XCTAssertNotNil(coreDataContainer.persistentStoreCoordinator)
+        
+        guard let storeDescription = coreDataContainer.persistentStoreDescriptions.first else {
+            XCTFail("No persistent store description found")
+            return
+        }
+        
+        XCTAssertEqual(storeDescription.type, NSInMemoryStoreType)
+    }
 }

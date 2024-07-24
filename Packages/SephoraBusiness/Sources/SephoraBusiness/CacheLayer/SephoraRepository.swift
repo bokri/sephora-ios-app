@@ -13,11 +13,11 @@ public final class SephoraRepository: SephoraRepositoryProtocol {
     
     // MARK: - Properties
 
-      private let cacheLayer: CacheLayer
+      private let cacheLayer: CacheLayerProtocol
 
       // MARK: - Init
 
-    public init(cacheLayer: CacheLayer = CacheLayer.instance) {
+    public init(cacheLayer: CacheLayerProtocol = CacheLayer.instance) {
         self.cacheLayer = cacheLayer
       }
     
