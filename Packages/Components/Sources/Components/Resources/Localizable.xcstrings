@@ -1,6 +1,40 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "genericErrorDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If problems are not resolved, try to restart the app."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si les problèmes persistent, n'hésitez pas à fermer l'application puis à la relancer."
+          }
+        }
+      }
+    },
+    "genericErrorTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oops ! An error occured"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oops ! Une erreur est survenue"
+          }
+        }
+      }
+    },
     "homePageTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -14,6 +48,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nos produits du moment"
+          }
+        }
+      }
+    },
+    "retryCta" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retry"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réessayer"
           }
         }
       }

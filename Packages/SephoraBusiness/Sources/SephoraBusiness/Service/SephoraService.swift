@@ -23,16 +23,12 @@ public actor SephoraService: SephoraServiceProtocol {
             .compactMap { model -> ProductItem? in
                 return model.toEntity()
             }
-        
-        print("SAVED \(savedProducts.count)")
-        
+              
         if savedProducts.isEmpty {
             let products = try await networkService.getProducts()
             try repository.addProductItems(products: products)
-            print("From network")
             return products
         } else {
-            print("From DB")
             return savedProducts
         }
     }

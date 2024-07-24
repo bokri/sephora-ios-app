@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		206A2E5F2C50D60300BB2143 /* Entities in Frameworks */ = {isa = PBXBuildFile; productRef = 206A2E5E2C50D60300BB2143 /* Entities */; };
 		206A2E642C50F0E100BB2143 /* Components in Frameworks */ = {isa = PBXBuildFile; productRef = 206A2E632C50F0E100BB2143 /* Components */; };
+		206A2E672C51023B00BB2143 /* ProductCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206A2E662C51023B00BB2143 /* ProductCollectionViewDelegate.swift */; };
+		206A2E692C51027B00BB2143 /* ProductCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206A2E682C51027B00BB2143 /* ProductCollectionViewDataSource.swift */; };
+		206A2E6C2C51116400BB2143 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 206A2E6B2C51116400BB2143 /* RxCocoa */; };
+		206A2E6E2C51116400BB2143 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 206A2E6D2C51116400BB2143 /* RxSwift */; };
 		20AD6B1A2C501D3600FF8D89 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AD6B192C501D3600FF8D89 /* Coordinator.swift */; };
 		20AD6B1C2C501DBD00FF8D89 /* HomePageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AD6B1B2C501DBD00FF8D89 /* HomePageCoordinator.swift */; };
 		20AD6B1F2C501E8A00FF8D89 /* ProductDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AD6B1E2C501E8A00FF8D89 /* ProductDetailCoordinator.swift */; };
@@ -24,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		206A2E662C51023B00BB2143 /* ProductCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewDelegate.swift; sourceTree = "<group>"; };
+		206A2E682C51027B00BB2143 /* ProductCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		20AD6B192C501D3600FF8D89 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		20AD6B1B2C501DBD00FF8D89 /* HomePageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageCoordinator.swift; sourceTree = "<group>"; };
 		20AD6B1E2C501E8A00FF8D89 /* ProductDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailCoordinator.swift; sourceTree = "<group>"; };
@@ -46,6 +52,8 @@
 			files = (
 				20AD6B2B2C50286D00FF8D89 /* SephoraBusiness in Frameworks */,
 				206A2E5F2C50D60300BB2143 /* Entities in Frameworks */,
+				206A2E6E2C51116400BB2143 /* RxSwift in Frameworks */,
+				206A2E6C2C51116400BB2143 /* RxCocoa in Frameworks */,
 				206A2E642C50F0E100BB2143 /* Components in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -53,6 +61,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		206A2E652C51022500BB2143 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				206A2E662C51023B00BB2143 /* ProductCollectionViewDelegate.swift */,
+				206A2E682C51027B00BB2143 /* ProductCollectionViewDataSource.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
 		20AD6B182C501D2700FF8D89 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +81,7 @@
 		20AD6B1D2C501E0400FF8D89 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
+				206A2E652C51022500BB2143 /* Delegates */,
 				20AD6B272C50252800FF8D89 /* Coordinator */,
 				29287F3E25BE64F70053B536 /* HomePageViewController.swift */,
 				20AD6B252C50200200FF8D89 /* HomePageViewModel.swift */,
@@ -148,6 +166,8 @@
 				20AD6B2A2C50286D00FF8D89 /* SephoraBusiness */,
 				206A2E5E2C50D60300BB2143 /* Entities */,
 				206A2E632C50F0E100BB2143 /* Components */,
+				206A2E6B2C51116400BB2143 /* RxCocoa */,
+				206A2E6D2C51116400BB2143 /* RxSwift */,
 			);
 			productName = Sephora;
 			productReference = 29287F3725BE64F70053B536 /* Sephora.app */;
@@ -181,6 +201,7 @@
 				20AD6B292C50286D00FF8D89 /* XCLocalSwiftPackageReference "Packages/SephoraBusiness" */,
 				206A2E5D2C50D60300BB2143 /* XCLocalSwiftPackageReference "Packages/Entities" */,
 				206A2E622C50F0E100BB2143 /* XCLocalSwiftPackageReference "Packages/Components" */,
+				206A2E6A2C51116400BB2143 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 29287F3825BE64F70053B536 /* Products */;
 			projectDirPath = "";
@@ -209,8 +230,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				20AD6B222C501EBE00FF8D89 /* ProductDetailsViewController.swift in Sources */,
+				206A2E672C51023B00BB2143 /* ProductCollectionViewDelegate.swift in Sources */,
 				29287F3F25BE64F70053B536 /* HomePageViewController.swift in Sources */,
 				20AD6B262C50200200FF8D89 /* HomePageViewModel.swift in Sources */,
+				206A2E692C51027B00BB2143 /* ProductCollectionViewDataSource.swift in Sources */,
 				20AD6B1C2C501DBD00FF8D89 /* HomePageCoordinator.swift in Sources */,
 				20AD6B242C501EE300FF8D89 /* ProductDetailsViewModel.swift in Sources */,
 				29287F3B25BE64F70053B536 /* AppDelegate.swift in Sources */,
@@ -362,7 +385,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5KNK9S79RU;
 				INFOPLIST_FILE = Sephora/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -382,7 +405,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5KNK9S79RU;
 				INFOPLIST_FILE = Sephora/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -432,6 +455,17 @@
 		};
 /* End XCLocalSwiftPackageReference section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		206A2E6A2C51116400BB2143 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		206A2E5E2C50D60300BB2143 /* Entities */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -440,6 +474,16 @@
 		206A2E632C50F0E100BB2143 /* Components */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Components;
+		};
+		206A2E6B2C51116400BB2143 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 206A2E6A2C51116400BB2143 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		206A2E6D2C51116400BB2143 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 206A2E6A2C51116400BB2143 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
 		};
 		20AD6B2A2C50286D00FF8D89 /* SephoraBusiness */ = {
 			isa = XCSwiftPackageProductDependency;

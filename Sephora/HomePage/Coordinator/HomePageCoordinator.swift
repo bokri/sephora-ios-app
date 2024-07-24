@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SephoraBusiness
 
 protocol ListViewControllerDelegate: AnyObject {
     func goToDetailView()
@@ -16,22 +17,19 @@ final class ListCoordinator: Coordinator {
     
     private(set) var navigationController: UINavigationController
     var childCoordinators = [Coordinator]()
+    let sephoraService = SephoraService()
     
     init(navigationController : UINavigationController) {
         self.navigationController = navigationController
     }
 
     deinit {
-        print("deinit 1")
     }
     
     // Définition du point d'entrée
     func start() {
-        let listViewController = HomePageViewController()
-        listViewController.coordinator = self
-        
-        listViewController.configure(viewModel: HomePageViewModel())
-        
+        let viewModel = HomePageViewModel(sephoraService: sephoraService)
+        let listViewController = HomePageViewController(coordinator: self, viewModel: viewModel)
         navigationController.pushViewController(listViewController, animated: true)
     }
 }

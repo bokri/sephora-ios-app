@@ -7,43 +7,48 @@
 
 import Foundation
 import UIKit
+import Entities
 
-class ProductCollectionViewCell: UICollectionViewCell {
-    static let identifier = "ProductCollectionViewCell"
-
+public class ProductCollectionViewCell: UICollectionViewCell {
     private let productImageView = UIImageView()
     private let titleLabel = UILabel()
-    private let descriptionLabel = UILabel()
     private let priceLabel = UILabel()
+    private let brandLabel = UILabel()
 
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
     }
 
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     private func setupUI() {
         contentView.backgroundColor = UIColor(resource: .background)
-        contentView.layer.cornerRadius = Dimens.cornerRadius
-        contentView.layer.shadowColor = UIColor(resource: .background).cgColor
+        contentView.layer.cornerRadius = 10
+        contentView.layer.borderWidth = 1
+        contentView.layer.borderColor = UIColor.lightGray.cgColor
+        contentView.layer.shadowColor = UIColor(resource: .foreground).cgColor
         contentView.layer.shadowOpacity = 0.1
         contentView.layer.shadowOffset = CGSize(width: 0, height: 2)
-        contentView.layer.shadowRadius = Dimens.shadowRadius
+        contentView.layer.shadowRadius = 4
+        contentView.layer.masksToBounds = false
 
         productImageView.contentMode = .scaleAspectFill
         productImageView.clipsToBounds = true
+        productImageView.layer.cornerRadius = 10
+        productImageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+
         contentView.addSubview(productImageView)
         contentView.addSubview(titleLabel)
-        contentView.addSubview(descriptionLabel)
         contentView.addSubview(priceLabel)
+        contentView.addSubview(brandLabel)
 
         productImageView.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
+        brandLabel.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             productImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -55,29 +60,32 @@ class ProductCollectionViewCell: UICollectionViewCell {
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Dimens.paddingS),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Dimens.paddingS),
 
-            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Dimens.paddingS),
-            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Dimens.paddingS),
-            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Dimens.paddingS),
-
-            priceLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: Dimens.paddingS),
+            priceLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Dimens.paddingXS),
             priceLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Dimens.paddingS),
             priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Dimens.paddingS),
-            priceLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Dimens.paddingS)
+            priceLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 0),
+
+            brandLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: Dimens.paddingXS),
+            brandLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Dimens.paddingS),
+            brandLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Dimens.paddingS),
+            brandLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Dimens.paddingS)
         ])
     }
 
-    func configure(with product: Product) {
-        titleLabel.text = product.product_name
-        descriptionLabel.text = product.description
+    public func configure(with product: ProductItem) {
+        titleLabel.text = product.productName
         priceLabel.text = "\(product.price) €"
-        titleLabel.font = UIFont.boldSystemFont
-        descriptionLabel.font = UIFont.systemFont(ofSize: 12)
-        descriptionLabel.textColor = UIColor(resource: .foreground)
-        priceLabel.font = UIFont.systemFont
+        brandLabel.text = product.cBrand.name
+
+        titleLabel.font = Fonts.boldM
+        priceLabel.font = Fonts.regularM
+        priceLabel.textAlignment = .center
         priceLabel.textColor = UIColor(resource: .foreground)
+        brandLabel.font = Fonts.regularS
+        brandLabel.textColor = UIColor(resource: .foreground)
 
         // Load the image
-        if let url = URL(string: product.images_url.small) {
+        if let small = product.imagesUrl?.small, let url = URL(string: small) {
             URLSession.shared.dataTask(with: url) { data, response, error in
                 if let data = data {
                     DispatchQueue.main.async {
