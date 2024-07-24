@@ -10,6 +10,7 @@ import Entities
 import CoreData
 
 extension ImagesUrl {
+    /// Converts `ImagesUrl` to `ImagesUrlModel` for Core Data storage.
     public func toImagesUrlModel(context: CoreData.NSManagedObjectContext) -> ImagesUrlModel {
         let model = ImagesUrlModel(context: context)
         model.id = UUID()

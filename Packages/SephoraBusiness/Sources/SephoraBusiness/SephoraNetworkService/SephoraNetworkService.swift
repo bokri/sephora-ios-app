@@ -10,18 +10,23 @@ import Entities
 
 public actor SephoraNetworkService: SephoraNetworkServiceProtocol {
     
+    // MARK: - Properties
+    
     private var networkService: NetworkServiceProtocol
+    
+    // MARK: - Initialization
     
     public init(networkService: NetworkServiceProtocol = NetworkService()) {
         self.networkService = networkService
     }
     
+    // MARK: - Public Methods
+    
+    /// Fetches products from the network.
     public func getProducts() async throws -> [ProductItem] {
         do {
             let endpoint = SephoraApiEndpoint.getProducts
-            
             let results = try await networkService.fetchData(endpoint, type: [ProductItem].self)
-            
             return results
         } catch {
             throw SephoraError.productsError(originalError: error)

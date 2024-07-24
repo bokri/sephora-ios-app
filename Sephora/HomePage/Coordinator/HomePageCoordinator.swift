@@ -38,6 +38,7 @@ final class ListCoordinator: Coordinator {
     
     deinit {
         // Clean up resources if needed
+        Logger.debug("Deinit ListCoordinator")
     }
     
     /// Sets up the initial view controller and pushes it onto the navigation stack.

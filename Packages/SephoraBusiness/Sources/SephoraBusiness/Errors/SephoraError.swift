@@ -7,7 +7,17 @@
 
 import Foundation
 
-public enum SephoraError: Error {
+public enum SephoraError: LocalizedError {
     case productsError(originalError: Error)
     case dataBaseError(originalError: Error)
+    
+    /// Provides a localized description for the error.
+    public var errorDescription: String? {
+        switch self {
+        case .productsError(let originalError):
+            return "An error occurred: \(originalError.localizedDescription)"
+        case .dataBaseError(let originalError):
+            return "An error occurred while performing a database operation: \(originalError.localizedDescription)"
+        }
+    }
 }

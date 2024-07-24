@@ -7,6 +7,7 @@
 
 import Foundation
 import Entities
+import SephoraBusiness
 
 class ProductDetailsViewModel {
     
@@ -22,9 +23,15 @@ class ProductDetailsViewModel {
         self.productItem = productItem
     }
     
+    deinit {
+        // Clean up resources if needed
+        Logger.debug("Deinit ProductDetailsViewModel")
+    }
+    
     // MARK: - Methods
     
     func onBackDetected() {
+        Logger.debug("Back to previous view")
         coordinator?.backToListView() // Notify coordinator to navigate back to list view
     }
 }

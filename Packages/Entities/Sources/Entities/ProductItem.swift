@@ -7,15 +7,22 @@
 
 import Foundation
 
+// Represents a product with various details
 public struct ProductItem: Decodable {
-    public let productId: Int64
-    public let productName: String
-    public let description: String
-    public let price: Float
-    public let imagesUrl: ImagesUrl?
-    public let cBrand: Brand
-    public let isSpecialBrand: Bool
     
+    // MARK: - Properties
+    
+    public let productId: Int64 // Unique identifier for the product
+    public let productName: String // Name of the product
+    public let description: String // Description of the product
+    public let price: Float // Price of the product
+    public let imagesUrl: ImagesUrl? // Optional URLs for product images
+    public let cBrand: Brand // Brand of the product
+    public let isSpecialBrand: Bool // Flag indicating if the brand is special
+    
+    // MARK: - Constructors
+    
+    // Initializes a ProductItem with provided values
     public init(
         productId: Int64,
         productName: String,
@@ -35,8 +42,10 @@ public struct ProductItem: Decodable {
     }
 }
 
+// MARK: - Equatable
+
 extension ProductItem: Equatable {
     public static func == (lhs: ProductItem, rhs: ProductItem) -> Bool {
-        lhs.productId == rhs.productId
+        lhs.productId == rhs.productId // Equality based on productId
     }
 }

@@ -9,5 +9,6 @@ import Foundation
 import Entities
 
 public protocol SephoraServiceProtocol {
+    /// Asynchronously fetches a list of `ProductItem` objects.
     func getProducts() async throws -> [ProductItem]
 }

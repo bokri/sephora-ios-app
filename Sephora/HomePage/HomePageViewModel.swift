@@ -52,11 +52,13 @@ class HomePageViewModel {
                 // Fetch products from the service
                 let products = try await sephoraService.getProducts()
                 
+                Logger.debug("Products fetched succesfully count: \(products.count)")
                 // Update the products relay and state
                 self.products.accept(products)
                 state.onNext(.success) // Notify that loading succeeded
             } catch {
                 // Notify that an error occurred
+                Logger.error("An error occured on fetching products \(error.localizedDescription)")
                 state.onNext(.error)
             }
         }
@@ -65,12 +67,14 @@ class HomePageViewModel {
     /// Handles the event when a cell is clicked.
     /// - Parameter index: The index of the clicked cell.
     func onCellClicked(index: Int) {
+        Logger.debug("Cell index \(index) is clicked")
         let productItem = products.value[index]
         coordinator?.goToDetailView(productItem: productItem)
     }
     
     /// Handles the event when the error state is clicked, and retries fetching products.
     func onErrorClicked() async {
+        Logger.debug("Retry clicked")
         await getProducts()
     }
 }

@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Entities
+import SephoraBusiness
 
 protocol ProductDetailViewControllerDelegate: AnyObject {
     func backToListView() // Method to navigate back to the list view
@@ -25,6 +26,11 @@ final class DetailCoordinator: Coordinator, ParentCoordinator {
     init(navigationController: UINavigationController, productItem: ProductItem) {
         self.navigationController = navigationController
         self.productItem = productItem
+    }
+    
+    deinit {
+        // Clean up resources if needed
+        Logger.debug("Deinit ProductDetailViewControllerDelegate")
     }
     
     // MARK: - Methods

@@ -8,6 +8,7 @@
 import Foundation
 import CoreData
 
+/// A protocol that defines the requirements for a cache layer responsible for managing Core Data operations.
 public protocol CacheLayerProtocol {
     var backgroundContext: NSManagedObjectContext { get }
 }
