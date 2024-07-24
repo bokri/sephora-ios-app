@@ -17,4 +17,8 @@ class ProductDetailsViewModel {
         self.productItem = productItem
     }
     
+    func onBackDetected() {
+        coordinator?.backToListView()
+    }
+    
 }
