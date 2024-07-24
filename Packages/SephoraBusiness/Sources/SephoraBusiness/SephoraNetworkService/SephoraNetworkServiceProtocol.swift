@@ -8,6 +8,6 @@
 import Foundation
 import Entities
 
-public protocol SephoraNetworkServiceProtocol: Actor {
+public protocol SephoraNetworkServiceProtocol {
     func getProducts() async throws -> [ProductItem]
 }
