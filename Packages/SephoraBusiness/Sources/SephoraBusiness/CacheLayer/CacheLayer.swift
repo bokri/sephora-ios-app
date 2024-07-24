@@ -8,16 +8,6 @@
 import Foundation
 import CoreData
 
-public final class CoreDataContainer: NSPersistentContainer {
-  public init(name: String, bundle: Bundle,
-    inMemory: Bool = false) {
-    guard let mom = NSManagedObjectModel.mergedModel(from: [bundle]) else {
-      fatalError("Failed to create mom")
-    }
-    super.init(name: name, managedObjectModel: mom)
-  }
-}
-
 
 public final class CacheLayer {
     

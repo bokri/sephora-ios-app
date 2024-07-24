@@ -23,7 +23,7 @@ public enum SephoraApiEndpoint: APIEndpoint {
     
     /// A dictionary of parameters to be included in the request.
     public var parameters: [String : Any] {
-        var parameters: [String: Any] = [:]
+        let parameters: [String: Any] = [:]
         
         switch self {
         case .getProducts:

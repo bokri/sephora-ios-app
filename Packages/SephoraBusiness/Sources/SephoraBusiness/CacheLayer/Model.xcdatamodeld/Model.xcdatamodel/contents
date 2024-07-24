@@ -3,11 +3,13 @@
     <entity name="BrandModel" representedClassName="BrandModel" syncable="YES" codeGenerationType="class">
         <attribute name="id" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="relationship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProductItemModel" inverseName="cBrand" inverseEntity="ProductItemModel"/>
     </entity>
     <entity name="ImagesUrlModel" representedClassName="ImagesUrlModel" syncable="YES" codeGenerationType="class">
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="large" optional="YES" attributeType="String"/>
         <attribute name="small" optional="YES" attributeType="String"/>
+        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProductItemModel" inverseName="imagesUrl" inverseEntity="ProductItemModel"/>
     </entity>
     <entity name="ProductItemModel" representedClassName="ProductItemModel" syncable="YES" codeGenerationType="class">
         <attribute name="isSpecialBrand" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -15,7 +17,7 @@
         <attribute name="productDescription" optional="YES" attributeType="String"/>
         <attribute name="productId" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="productName" optional="YES" attributeType="String"/>
-        <relationship name="cBrand" maxCount="1" deletionRule="No Action" destinationEntity="BrandModel"/>
-        <relationship name="imagesUrl" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="ImagesUrlModel"/>
+        <relationship name="cBrand" maxCount="1" deletionRule="No Action" destinationEntity="BrandModel" inverseName="relationship" inverseEntity="BrandModel"/>
+        <relationship name="imagesUrl" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="ImagesUrlModel" inverseName="relationship" inverseEntity="ImagesUrlModel"/>
     </entity>
 </model>

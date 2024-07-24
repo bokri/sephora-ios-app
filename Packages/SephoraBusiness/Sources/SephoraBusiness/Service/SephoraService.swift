@@ -23,11 +23,12 @@ public actor SephoraService: SephoraServiceProtocol {
             .compactMap { model -> ProductItem? in
                 return model.toEntity()
             }
-              
+
         if savedProducts.isEmpty {
             let products = try await networkService.getProducts()
             try repository.addProductItems(products: products)
             return products
+                .sorted { $0.isSpecialBrand && !$1.isSpecialBrand }
         } else {
             return savedProducts
         }

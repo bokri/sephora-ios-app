@@ -25,8 +25,8 @@ public final class SephoraRepository: SephoraRepositoryProtocol {
     public func getProducts() throws -> [ProductItemModel] {
         do {
             let fetchRequest = ProductItemModel.fetchRequest()
-            let sortDescriptor = NSSortDescriptor(key: "isSpecialBrand", ascending: true)
-            fetchRequest.sortDescriptors = []
+            let sortDescriptor = NSSortDescriptor(key: "isSpecialBrand", ascending: false)
+            fetchRequest.sortDescriptors = [sortDescriptor]
             let products = try cacheLayer.backgroundContext.fetch(fetchRequest)
             return products
         } catch {
@@ -49,7 +49,7 @@ public final class SephoraRepository: SephoraRepositoryProtocol {
         
         do {
             for product in deletedProducts {
-                try cacheLayer.backgroundContext.delete(product)
+                cacheLayer.backgroundContext.delete(product)
             }
             try cacheLayer.backgroundContext.save()
         } catch {
