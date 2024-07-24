@@ -34,3 +34,9 @@ public struct ProductItem: Decodable {
         self.isSpecialBrand = isSpecialBrand
     }
 }
+
+extension ProductItem: Equatable {
+    public static func == (lhs: ProductItem, rhs: ProductItem) -> Bool {
+        lhs.productId == rhs.productId
+    }
+}

@@ -20,5 +20,4 @@ class ProductDetailsViewModel {
     func onBackDetected() {
         coordinator?.backToListView()
     }
-    
 }
