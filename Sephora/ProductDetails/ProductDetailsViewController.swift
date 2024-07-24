@@ -11,42 +11,50 @@ import Components
 
 class ProductDetailsViewController: UIViewController {
     
-    var viewModel: ProductDetailsViewModel?
+    // MARK: - Properties
     
-    private let scrollView = UIScrollView()
-    private let contentView = UIView()
+    private var viewModel: ProductDetailsViewModel? // View model for product details
     
-    private let productImageView = UIImageView()
-    private let titleLabel = UILabel()
-    private let brandLabel = UILabel()
-    private let descriptionLabel = UILabel()
-    private let priceLabel = UILabel()
+    private let scrollView = UIScrollView() // Scroll view for content
+    private let contentView = UIView() // Container view for content
+    
+    private let productImageView = UIImageView() // Image view for product image
+    private let titleLabel = UILabel() // Label for product title
+    private let brandLabel = UILabel() // Label for product brand
+    private let descriptionLabel = UILabel() // Label for product description
+    private let priceLabel = UILabel() // Label for product price
+    
+    // MARK: - Constructor
     
     init(viewModel: ProductDetailsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         
-        setupUI()
+        setupUI() // Set up UI elements
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
+        configureUI() // Configure UI with view model data
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if isMovingFromParent {
-            viewModel?.coordinator?.backToListView()
+            viewModel?.onBackDetected() // Notify view model on back navigation
         }
     }
     
+    // MARK: - Methods
+    
     private func setupUI() {
-        title = viewModel?.productItem.productName
+        title = viewModel?.productItem.productName // Set title from view model
         view.backgroundColor = .systemBackground
         
         // Add scroll view and content view
@@ -128,6 +136,7 @@ class ProductDetailsViewController: UIViewController {
         descriptionLabel.text = product.description
         priceLabel.text = "\(product.price) €"
         
+        // Load product image asynchronously
         if let imageUrlString = product.imagesUrl?.small, let imageUrl = URL(string: imageUrlString) {
             URLSession.shared.dataTask(with: imageUrl) { data, response, error in
                 if let data = data, let image = UIImage(data: data) {

@@ -8,15 +8,15 @@
 import Foundation
 import UIKit
 
-final public class ErrorView: UIView {
+public class ErrorView: UIView {
     
     // MARK: - Properties
     
-    private var titleLabel: UILabel
-    private var subtitleLabel: UILabel
-    private var callToAction: UIButton
+    private var titleLabel: UILabel // Title label for error message
+    private var subtitleLabel: UILabel // Subtitle label for additional info
+    private var callToAction: UIButton // Button to retry action
     
-    private weak var delegate: ErrorViewDelegate?
+    private weak var delegate: ErrorViewDelegate? // Delegate for handling button tap
     
     // MARK: - Constructors
     
@@ -27,7 +27,7 @@ final public class ErrorView: UIView {
         
         super.init(frame: .zero)
         
-        setupViews()
+        setupViews() // Initialize and configure views
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -37,26 +37,26 @@ final public class ErrorView: UIView {
     // MARK: - Public Methods
     
     public func setupDelegate(delegate: ErrorViewDelegate?) {
-        self.delegate = delegate
+        self.delegate = delegate // Set the delegate
     }
     
     // MARK: - Private Methods
     
     private func setupViews() {
-        backgroundColor = UIColor(resource: .background)
-        titleLabel.textColor = UIColor(resource: .foreground)
+        backgroundColor = UIColor(resource: .background) // Set background color
+        titleLabel.textColor = UIColor(resource: .foreground) // Configure title label
         titleLabel.font = Fonts.boldL
         titleLabel.numberOfLines = 0
         titleLabel.textAlignment = .center
         titleLabel.text = String(localized: .localizable(.genericErrorTitle))
         
-        subtitleLabel.textColor = UIColor(resource: .foreground)
+        subtitleLabel.textColor = UIColor(resource: .foreground) // Configure subtitle label
         subtitleLabel.font = Fonts.regularM
         subtitleLabel.numberOfLines = 0
         subtitleLabel.textAlignment = .center
         subtitleLabel.text = String(localized: .localizable(.genericErrorDescription))
         
-        callToAction.setTitle(String(localized: .localizable(.retryCta)), for: .normal)
+        callToAction.setTitle(String(localized: .localizable(.retryCta)), for: .normal) // Configure button
         callToAction.layer.cornerRadius = Dimens.cornerRadius
         callToAction.setBackgroundColor(color: UIColor(resource: .foreground), forState: .normal)
         callToAction.setBackgroundColor(color: UIColor(resource: .foreground).withAlphaComponent(0.2), forState: .highlighted)
@@ -68,9 +68,9 @@ final public class ErrorView: UIView {
         subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
         callToAction.translatesAutoresizingMaskIntoConstraints = false
         
-        addSubview(self.titleLabel)
-        addSubview(self.subtitleLabel)
-        addSubview(self.callToAction)
+        addSubview(self.titleLabel) // Add title label
+        addSubview(self.subtitleLabel) // Add subtitle label
+        addSubview(self.callToAction) // Add retry button
         
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Dimens.paddingXL),
@@ -92,7 +92,7 @@ final public class ErrorView: UIView {
     
     @objc private func errorButtonTouchUp() {
         Task {
-            await self.delegate?.errorButtonTouchUp()
+            await self.delegate?.errorButtonTouchUp() // Notify delegate on button tap
         }
     }
 }

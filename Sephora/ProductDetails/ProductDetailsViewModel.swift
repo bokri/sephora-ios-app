@@ -9,15 +9,22 @@ import Foundation
 import Entities
 
 class ProductDetailsViewModel {
-    weak var coordinator: ProductDetailViewControllerDelegate?
-    var productItem: ProductItem
+    
+    // MARK: - Properties
+    
+    private weak var coordinator: ProductDetailViewControllerDelegate? // Coordinator for navigation actions
+    private(set) var productItem: ProductItem // Product item data
+    
+    // MARK: - Constructor
     
     init(coordinator: ProductDetailViewControllerDelegate?, productItem: ProductItem) {
         self.coordinator = coordinator
         self.productItem = productItem
     }
     
+    // MARK: - Methods
+    
     func onBackDetected() {
-        coordinator?.backToListView()
+        coordinator?.backToListView() // Notify coordinator to navigate back to list view
     }
 }

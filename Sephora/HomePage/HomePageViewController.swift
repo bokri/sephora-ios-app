@@ -13,22 +13,25 @@ import RxSwift
 
 class HomePageViewController: UIViewController {
     
-    var viewModel: HomePageViewModel?
+    // MARK: - Properties
+    
+    var viewModel: HomePageViewModel? // The view model providing data and business logic
     
     // Success View
-    private let collectionView: UICollectionView
-    private let dataSource: ProductCollectionViewDataSource
-    private let delegate: ProductCollectionViewDelegate
-    private let flowLayout: ProductCollectionViewFlowLayout
+    private let collectionView: UICollectionView // Collection view displaying products
+    private let dataSource: ProductCollectionViewDataSource // Data source for the collection view
+    private let delegate: ProductCollectionViewDelegate // Delegate for handling collection view interactions
+    private let flowLayout: ProductCollectionViewFlowLayout // Layout for the collection view
     
     // Loading View
-    
-    private let loadingIndicator = UIActivityIndicatorView(style: .large)
+    private let loadingIndicator = UIActivityIndicatorView(style: .large) // Loading spinner
     
     // Error View
-    private let errorView: ErrorView
+    private let errorView: ErrorView // View shown when an error occurs
     
-    private let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag() // Bag for managing RxSwift disposables
+    
+    // MARK: - Constructor
     
     init(viewModel: HomePageViewModel?) {
         self.viewModel = viewModel
@@ -39,29 +42,35 @@ class HomePageViewController: UIViewController {
         self.errorView = ErrorView()
         super.init(nibName: nil, bundle: nil)
         
-        setupUI()
+        setupUI() // Initialize UI components
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("init(coder:) has not been implemented") // Fatal error for unsupported initialization
     }
+    
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bindViewModel()
+        bindViewModel() // Bind view model properties to UI components
         Task {
-            await fetchData()
+            await fetchData() // Fetch data asynchronously
         }
     }
     
+    // MARK: - Private methods
+    
     private func setupUI() {
-        title = String(localized: .localizable(.homePageTitle))
+        title = String(localized: .localizable(.homePageTitle)) // Set view controller title
         
+        // Add subviews
         view.addSubview(collectionView)
         view.addSubview(loadingIndicator)
         view.addSubview(errorView)
         
+        // Set up Auto Layout constraints
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
         errorView.translatesAutoresizingMaskIntoConstraints = false
@@ -81,33 +90,34 @@ class HomePageViewController: UIViewController {
             errorView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
         
+        // Register cell and set up delegate and data source
         collectionView.register(cellType: ProductCollectionViewCell.self)
         delegate.setupDelegate(delegate: self)
         collectionView.dataSource = dataSource
         collectionView.delegate = delegate
         errorView.setupDelegate(delegate: self)
         
-        view.backgroundColor = UIColor(resource: .background)
-        collectionView.backgroundColor = UIColor(resource: .background)
+        view.backgroundColor = UIColor(resource: .background) // Set background color
+        collectionView.backgroundColor = UIColor(resource: .background) // Set collection view background color
     }
     
     private func fetchData() async {
-        await self.viewModel?.getProducts()
+        await self.viewModel?.getProducts() // Fetch products from view model
     }
     
     private func bindViewModel() {
         viewModel?.state
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] state in
-                self?.handleStateChange(state)
+                self?.handleStateChange(state) // Handle state changes
             })
             .disposed(by: disposeBag)
         
         viewModel?.products
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] products in
-                self?.dataSource.update(products: products)
-                self?.collectionView.reloadData()
+                self?.dataSource.update(products: products) // Update data source
+                self?.collectionView.reloadData() // Reload collection view data
             })
             .disposed(by: disposeBag)
     }
@@ -115,29 +125,33 @@ class HomePageViewController: UIViewController {
     private func handleStateChange(_ state: HomePageState) {
         switch state {
         case .loading:
-            loadingIndicator.startAnimating()
-            collectionView.isHidden = true
-            errorView.isHidden = true
+            loadingIndicator.startAnimating() // Show loading indicator
+            collectionView.isHidden = true // Hide collection view
+            errorView.isHidden = true // Hide error view
         case .success:
-            loadingIndicator.stopAnimating()
-            collectionView.isHidden = false
-            errorView.isHidden = true
+            loadingIndicator.stopAnimating() // Hide loading indicator
+            collectionView.isHidden = false // Show collection view
+            errorView.isHidden = true // Hide error view
         case .error:
-            loadingIndicator.stopAnimating()
-            collectionView.isHidden = true
-            errorView.isHidden = false
+            loadingIndicator.stopAnimating() // Hide loading indicator
+            collectionView.isHidden = true // Hide collection view
+            errorView.isHidden = false // Show error view
         }
     }
 }
 
+// MARK: - ErrorViewDelegate
+
 extension HomePageViewController: ErrorViewDelegate {
     func errorButtonTouchUp() async {
-        await viewModel?.onErrorClicked()
+        await viewModel?.onErrorClicked() // Retry fetching data on error button click
     }
 }
 
+// MARK: - HomePageDelegate
+
 extension HomePageViewController: HomePageDelegate {
     func onCellClicked(index: Int) {
-        viewModel?.onCellClicked(index: index)
+        viewModel?.onCellClicked(index: index) // Handle cell click event
     }
 }

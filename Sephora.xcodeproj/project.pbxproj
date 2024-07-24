@@ -19,6 +19,7 @@
 		20AD6B242C501EE300FF8D89 /* ProductDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AD6B232C501EE300FF8D89 /* ProductDetailsViewModel.swift */; };
 		20AD6B262C50200200FF8D89 /* HomePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AD6B252C50200200FF8D89 /* HomePageViewModel.swift */; };
 		20AD6B2B2C50286D00FF8D89 /* SephoraBusiness in Frameworks */ = {isa = PBXBuildFile; productRef = 20AD6B2A2C50286D00FF8D89 /* SephoraBusiness */; };
+		20B01D2C2C5173B10028EA0F /* HomePageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B01D2B2C5173B10028EA0F /* HomePageState.swift */; };
 		20BE677C2C515AF7005C396A /* HomePageViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BE677B2C515AF7005C396A /* HomePageViewModelTests.swift */; };
 		20BE67842C515BE1005C396A /* MockSephoraService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BE67832C515BE1005C396A /* MockSephoraService.swift */; };
 		20BE67872C515CB3005C396A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 20BE67862C515CB3005C396A /* RxCocoa */; };
@@ -54,6 +55,7 @@
 		20AD6B212C501EBE00FF8D89 /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
 		20AD6B232C501EE300FF8D89 /* ProductDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewModel.swift; sourceTree = "<group>"; };
 		20AD6B252C50200200FF8D89 /* HomePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewModel.swift; sourceTree = "<group>"; };
+		20B01D2B2C5173B10028EA0F /* HomePageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageState.swift; sourceTree = "<group>"; };
 		20BE67792C515AF7005C396A /* SephoraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SephoraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20BE677B2C515AF7005C396A /* HomePageViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewModelTests.swift; sourceTree = "<group>"; };
 		20BE67832C515BE1005C396A /* MockSephoraService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSephoraService.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				20AD6B272C50252800FF8D89 /* Coordinator */,
 				29287F3E25BE64F70053B536 /* HomePageViewController.swift */,
 				20AD6B252C50200200FF8D89 /* HomePageViewModel.swift */,
+				20B01D2B2C5173B10028EA0F /* HomePageState.swift */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				20AD6B222C501EBE00FF8D89 /* ProductDetailsViewController.swift in Sources */,
 				206A2E672C51023B00BB2143 /* ProductCollectionViewDelegate.swift in Sources */,
 				29287F3F25BE64F70053B536 /* HomePageViewController.swift in Sources */,
+				20B01D2C2C5173B10028EA0F /* HomePageState.swift in Sources */,
 				20AD6B262C50200200FF8D89 /* HomePageViewModel.swift in Sources */,
 				206A2E692C51027B00BB2143 /* ProductCollectionViewDataSource.swift in Sources */,
 				20AD6B1C2C501DBD00FF8D89 /* HomePageCoordinator.swift in Sources */,
@@ -459,7 +463,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_STRICT_CONCURRENCY = minimal;
 			};
 			name = Debug;
 		};
@@ -516,7 +520,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_STRICT_CONCURRENCY = minimal;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

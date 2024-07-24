@@ -8,5 +8,5 @@
 import Foundation
 
 public protocol ErrorViewDelegate: AnyObject {
-    func errorButtonTouchUp() async
+    func errorButtonTouchUp() async // Handles the retry action when the button is tapped
 }

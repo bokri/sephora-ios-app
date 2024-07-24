@@ -9,6 +9,6 @@ import Foundation
 
 extension NSObject {
     public class var className: String {
-        return String(describing: self.classForCoder())
+        return String(describing: self.classForCoder()) // Returns the name of the class as a string
     }
 }

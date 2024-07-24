@@ -7,10 +7,16 @@
 
 import Foundation
 
+// Defines a Brand with an id and a name
 public struct Brand: Decodable {
-    public let id: String
-    public let name: String
+    // MARK: - Properties
     
+    public let id: String // Unique identifier for the brand
+    public let name: String // Name of the brand
+    
+    // MARK: - Constructors
+    
+    // Initializes a Brand with the given id and name
     public init(id: String, name: String) {
         self.id = id
         self.name = name

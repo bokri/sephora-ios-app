@@ -8,8 +8,7 @@
 import UIKit
 import SephoraBusiness
 
-@available(iOS 13.0, *)
-
+/// Handles scene lifecycle events and sets up the initial view controller.
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
@@ -17,16 +16,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
+        // Ensure that the scene is of type UIWindowScene
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
+        // Create a navigation controller to manage the view hierarchy
         let navigationController = UINavigationController()
+        
+        // Initialize the service that provides data for the app
         let sephoraService = SephoraService()
         
+        // Initialize the coordinator with the navigation controller and service
         coordinator = ListCoordinator(navigationController: navigationController, sephoraService: sephoraService)
+        
+        // Start the coordinator to set up the initial view controller
         coordinator?.start()
         
+        // Create a new window for the app and set its root view controller
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = coordinator?.navigationController
+        
+        // Make the window visible
         window?.makeKeyAndVisible()
     }
     

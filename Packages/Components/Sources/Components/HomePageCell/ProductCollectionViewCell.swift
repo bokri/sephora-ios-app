@@ -10,10 +10,15 @@ import UIKit
 import Entities
 
 public class ProductCollectionViewCell: UICollectionViewCell {
+    
+    // MARK: - Properties
+    
     private let productImageView = UIImageView()
     private let titleLabel = UILabel()
     private let priceLabel = UILabel()
     private let brandLabel = UILabel()
+    
+    // MARK: - Constructors
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,7 +28,10 @@ public class ProductCollectionViewCell: UICollectionViewCell {
     public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Private Methods
 
+    // Sets up UI elements and constraints
     private func setupUI() {
         contentView.backgroundColor = UIColor(resource: .background)
         contentView.layer.cornerRadius = 10
@@ -50,6 +58,7 @@ public class ProductCollectionViewCell: UICollectionViewCell {
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
         brandLabel.translatesAutoresizingMaskIntoConstraints = false
 
+        // Layout constraints for subviews
         NSLayoutConstraint.activate([
             productImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             productImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -71,7 +80,10 @@ public class ProductCollectionViewCell: UICollectionViewCell {
             brandLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Dimens.paddingS)
         ])
     }
+    
+    // MARK: - Public Methods
 
+    // Configures cell with product details
     public func configure(with product: ProductItem) {
         titleLabel.text = product.productName
         priceLabel.text = "\(product.price) €"
@@ -84,7 +96,7 @@ public class ProductCollectionViewCell: UICollectionViewCell {
         brandLabel.font = Fonts.regularS
         brandLabel.textColor = UIColor(resource: .foreground)
 
-        // Load the image
+        // Load and set product image
         if let small = product.imagesUrl?.small, let url = URL(string: small) {
             URLSession.shared.dataTask(with: url) { data, response, error in
                 if let data = data {

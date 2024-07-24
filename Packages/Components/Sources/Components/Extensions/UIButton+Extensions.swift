@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 extension UIButton {
+    /// Sets the button's background color for the specified state
     func setBackgroundColor(color: UIColor, forState: UIControl.State) {
         self.clipsToBounds = true
         UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
