@@ -8,19 +8,22 @@
 import Foundation
 import UIKit
 import SephoraBusiness
+import Entities
 
 protocol ListViewControllerDelegate: AnyObject {
-    func goToDetailView()
+    func goToDetailView(productItem: ProductItem)
 }
 
 final class ListCoordinator: Coordinator {
     
     private(set) var navigationController: UINavigationController
     var childCoordinators = [Coordinator]()
-    let sephoraService = SephoraService()
     
-    init(navigationController : UINavigationController) {
+    private var sephoraService: SephoraServiceProtocol
+    
+    init(navigationController : UINavigationController, sephoraService: SephoraServiceProtocol) {
         self.navigationController = navigationController
+        self.sephoraService = sephoraService
     }
 
     deinit {
@@ -28,15 +31,15 @@ final class ListCoordinator: Coordinator {
     
     // Définition du point d'entrée
     func start() {
-        let viewModel = HomePageViewModel(sephoraService: sephoraService)
-        let listViewController = HomePageViewController(coordinator: self, viewModel: viewModel)
+        let viewModel = HomePageViewModel(sephoraService: sephoraService, coordinator: self)
+        let listViewController = HomePageViewController(viewModel: viewModel)
         navigationController.pushViewController(listViewController, animated: true)
     }
 }
 
 extension ListCoordinator: ListViewControllerDelegate {
-    func goToDetailView() {
-        let detailCoordinator = DetailCoordinator(navigationController: navigationController, viewModel: ProductDetailsViewModel())
+    func goToDetailView(productItem: ProductItem) {
+        let detailCoordinator = DetailCoordinator(navigationController: navigationController, productItem: productItem)
         detailCoordinator.parentCoordinator = self
         addChildCoordinator(childCoordinator: detailCoordinator)
         

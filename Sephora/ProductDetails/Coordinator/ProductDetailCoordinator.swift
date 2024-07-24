@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Entities
 
 protocol ProductDetailViewControllerDelegate: AnyObject {
     func backToListView()
@@ -17,17 +18,17 @@ final class DetailCoordinator: Coordinator, ParentCoordinator {
     
     private(set) var navigationController: UINavigationController
     var childCoordinators = [Coordinator]()
-    let viewModel: ProductDetailsViewModel
+    private var productItem: ProductItem
     
-    init(navigationController : UINavigationController, viewModel: ProductDetailsViewModel) {
+    
+    init(navigationController : UINavigationController, productItem: ProductItem) {
         self.navigationController = navigationController
-        self.viewModel = viewModel
+        self.productItem = productItem
     }
     
     func start() {
-        let detailViewController = ProductDetailsViewController()
-        detailViewController.configure(viewModel: viewModel)
-        detailViewController.coordinator = self
+        let viewModel = ProductDetailsViewModel(coordinator: self, productItem: productItem)
+        let detailViewController = ProductDetailsViewController(viewModel: viewModel)
         
         self.navigationController.pushViewController(detailViewController, animated: true)
     }

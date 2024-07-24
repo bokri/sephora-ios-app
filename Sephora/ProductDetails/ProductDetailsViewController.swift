@@ -11,10 +11,14 @@ import UIKit
 class ProductDetailsViewController: UIViewController {
     
     var viewModel: ProductDetailsViewModel?
-    weak var coordinator: ProductDetailViewControllerDelegate?
     
-    func configure(viewModel: ProductDetailsViewModel) {
+    init(viewModel: ProductDetailsViewModel) {
         self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -25,8 +29,7 @@ class ProductDetailsViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         if isMovingFromParent {
-            coordinator?.backToListView()
+            viewModel?.coordinator?.backToListView()
         }
     }
-    
 }

@@ -10,7 +10,14 @@ import UIKit
 import SephoraBusiness
 
 class ProductCollectionViewDelegate: NSObject, UICollectionViewDelegate {
+    
+    weak var delegate: HomePageDelegate?
+    
+    func setupDelegate(delegate: HomePageDelegate?) {
+        self.delegate = delegate
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        Logger.debug("Click on \(indexPath.item)")
+        delegate?.onCellClicked(index: indexPath.item)
     }
 }

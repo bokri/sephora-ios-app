@@ -6,7 +6,15 @@
 //
 
 import Foundation
+import Entities
 
 class ProductDetailsViewModel {
+    weak var coordinator: ProductDetailViewControllerDelegate?
+    var productItem: ProductItem
+    
+    init(coordinator: ProductDetailViewControllerDelegate?, productItem: ProductItem) {
+        self.coordinator = coordinator
+        self.productItem = productItem
+    }
     
 }

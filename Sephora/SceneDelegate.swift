@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SephoraBusiness
 
 @available(iOS 13.0, *)
 
@@ -19,8 +20,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let navigationController = UINavigationController()
+        let sephoraService = SephoraService()
         
-        coordinator = ListCoordinator(navigationController: navigationController)
+        coordinator = ListCoordinator(navigationController: navigationController, sephoraService: sephoraService)
         coordinator?.start()
         
         window = UIWindow(windowScene: windowScene)

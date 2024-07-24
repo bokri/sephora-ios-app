@@ -9,6 +9,7 @@ import Foundation
 import Entities
 import SephoraBusiness
 import RxSwift
+import RxRelay
 
 enum HomePageState {
     case loading
@@ -17,15 +18,17 @@ enum HomePageState {
 }
 
 class HomePageViewModel {
-
+    
+    weak var coordinator: ListViewControllerDelegate?
     var state = PublishSubject<HomePageState>()
-    var products = PublishSubject<[ProductItem]>()
+    var products = BehaviorRelay<[ProductItem]>(value: [])
     
     private var sephoraService: SephoraServiceProtocol
     private let disposeBag = DisposeBag()
     
-    init(sephoraService: SephoraServiceProtocol) {
+    init(sephoraService: SephoraServiceProtocol, coordinator: ListViewControllerDelegate?) {
         self.sephoraService = sephoraService
+        self.coordinator = coordinator
     }
     
     func getProducts() async {
@@ -33,12 +36,17 @@ class HomePageViewModel {
         Task {
             do {
                 let products = try await sephoraService.getProducts()
-                self.products.onNext(products)
+                self.products.accept(products)
                 state.onNext(.success)
             } catch {
                 state.onNext(.error)
             }
         }
+    }
+    
+    func onCellClicked(index: Int) {
+        let productItem = products.value[index]
+        coordinator?.goToDetailView(productItem: productItem)
     }
     
     func onErrorClicked() async {

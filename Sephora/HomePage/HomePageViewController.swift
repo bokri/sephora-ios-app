@@ -13,7 +13,6 @@ import RxSwift
 
 class HomePageViewController: UIViewController {
     
-    weak var coordinator: ListViewControllerDelegate?
     var viewModel: HomePageViewModel?
     
     // Success View
@@ -31,8 +30,7 @@ class HomePageViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     
-    init(coordinator: ListViewControllerDelegate?, viewModel: HomePageViewModel?) {
-        self.coordinator = coordinator
+    init(viewModel: HomePageViewModel?) {
         self.viewModel = viewModel
         self.flowLayout = ProductCollectionViewFlowLayout()
         self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: self.flowLayout)
@@ -84,6 +82,7 @@ class HomePageViewController: UIViewController {
         ])
         
         collectionView.register(cellType: ProductCollectionViewCell.self)
+        delegate.setupDelegate(delegate: self)
         collectionView.dataSource = dataSource
         collectionView.delegate = delegate
         errorView.setupDelegate(delegate: self)
@@ -134,5 +133,11 @@ class HomePageViewController: UIViewController {
 extension HomePageViewController: ErrorViewDelegate {
     func errorButtonTouchUp() async {
         await viewModel?.onErrorClicked()
+    }
+}
+
+extension HomePageViewController: HomePageDelegate {
+    func onCellClicked(index: Int) {
+        viewModel?.onCellClicked(index: index)
     }
 }
