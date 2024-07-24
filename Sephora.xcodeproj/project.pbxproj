@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		206A2E5F2C50D60300BB2143 /* Entities in Frameworks */ = {isa = PBXBuildFile; productRef = 206A2E5E2C50D60300BB2143 /* Entities */; };
+		206A2E642C50F0E100BB2143 /* Components in Frameworks */ = {isa = PBXBuildFile; productRef = 206A2E632C50F0E100BB2143 /* Components */; };
 		20AD6B1A2C501D3600FF8D89 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AD6B192C501D3600FF8D89 /* Coordinator.swift */; };
 		20AD6B1C2C501DBD00FF8D89 /* HomePageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AD6B1B2C501DBD00FF8D89 /* HomePageCoordinator.swift */; };
 		20AD6B1F2C501E8A00FF8D89 /* ProductDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AD6B1E2C501E8A00FF8D89 /* ProductDetailCoordinator.swift */; };
@@ -45,6 +46,7 @@
 			files = (
 				20AD6B2B2C50286D00FF8D89 /* SephoraBusiness in Frameworks */,
 				206A2E5F2C50D60300BB2143 /* Entities in Frameworks */,
+				206A2E642C50F0E100BB2143 /* Components in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +147,7 @@
 			packageProductDependencies = (
 				20AD6B2A2C50286D00FF8D89 /* SephoraBusiness */,
 				206A2E5E2C50D60300BB2143 /* Entities */,
+				206A2E632C50F0E100BB2143 /* Components */,
 			);
 			productName = Sephora;
 			productReference = 29287F3725BE64F70053B536 /* Sephora.app */;
@@ -177,6 +180,7 @@
 			packageReferences = (
 				20AD6B292C50286D00FF8D89 /* XCLocalSwiftPackageReference "Packages/SephoraBusiness" */,
 				206A2E5D2C50D60300BB2143 /* XCLocalSwiftPackageReference "Packages/Entities" */,
+				206A2E622C50F0E100BB2143 /* XCLocalSwiftPackageReference "Packages/Components" */,
 			);
 			productRefGroup = 29287F3825BE64F70053B536 /* Products */;
 			projectDirPath = "";
@@ -418,6 +422,10 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Packages/Entities;
 		};
+		206A2E622C50F0E100BB2143 /* XCLocalSwiftPackageReference "Packages/Components" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/Components;
+		};
 		20AD6B292C50286D00FF8D89 /* XCLocalSwiftPackageReference "Packages/SephoraBusiness" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Packages/SephoraBusiness;
@@ -428,6 +436,10 @@
 		206A2E5E2C50D60300BB2143 /* Entities */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Entities;
+		};
+		206A2E632C50F0E100BB2143 /* Components */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Components;
 		};
 		20AD6B2A2C50286D00FF8D89 /* SephoraBusiness */ = {
 			isa = XCSwiftPackageProductDependency;
