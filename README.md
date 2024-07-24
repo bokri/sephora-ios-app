@@ -16,10 +16,7 @@ A showcase for Sephora products that fetches product data from a network service
 
 ## Screenshots
 
-<img src="screenshots/screenshot-1.png" width="200" height="400" />
-<img src="screenshots/screenshot-2.png" width="200" height="400" />
-<img src="screenshots/screenshot-3.png" width="200" height="400" />
-<img src="screenshots/screenshot-4.png" width="200" height="400" />
+<img src="Screenshots/screenshot-1.png" width="200" height="400" /> <img src="Screenshots/screenshot-2.png" width="200" height="400" /> <img src="Screenshots/screenshot-3.png" width="200" height="400" /> <img src="Screenshots/screenshot-4.png" width="200" height="400" />
 
 
 ## Architecture
